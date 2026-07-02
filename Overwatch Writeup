@@ -1,6 +1,5 @@
 ## Writeup
-- [HackTheBox — Overwatch Writeup]
-(https://medium.com/@ak4hit/hackthebox-overwatch-writeup-3bf7fdd2474f)
+- [HackTheBox — Overwatch Writeup](https://medium.com/@ak4hit/hackthebox-overwatch-writeup-3bf7fdd2474f)
 
 ## Attack Path Summary
 - Nmap → SMB (`software$`) → Decompile .NET → MSSQL creds
