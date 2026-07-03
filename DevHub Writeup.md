@@ -41,7 +41,7 @@ echo "<TARGET_IP> devhub.htb" >> /etc/hosts
 
 Browsing to `http://devhub.htb` shows **DevHub — Internal Development & Analytics Platform**, an internal dashboard listing active services:
 
-![DevHub Homepage](images/devhub-homepage.png)
+![DevHub Homepage](devhub-homepage.png)
 
 | Service | Description | Status |
 |---|---|---|
