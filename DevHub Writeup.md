@@ -227,7 +227,6 @@ jupyter-env  notebooks  user.txt
 analyst@devhub:~$ cat user.txt
 ```
 
-![Jupyter Terminal](images/jupyter-terminal.png)
 
 🚩 **User Flag captured.**
 
