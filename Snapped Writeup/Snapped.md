@@ -102,11 +102,11 @@ curl -s http://admin.snapped.htb/version.json
 {"version":"2.3.2","build_id":1,"total_build":512}
 ```
 
-**Nginx UI v2.3.2** — vulnerable to [GHSA-g9w5-qffc-6762](https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-g9w5-qffc-6762), an unauthenticated backup download flaw.
+**Nginx UI v2.3.2** — vulnerable to [CVE-2026-27944](https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-g9w5-qffc-6762), an unauthenticated backup download flaw.
 
 ---
 
-## Step 3 — Unauthenticated Backup Exfiltration (GHSA-g9w5-qffc-6762)
+## Step 3 — Unauthenticated Backup Exfiltration (CVE-2026-27944)
 
 ### The Vulnerability
 
