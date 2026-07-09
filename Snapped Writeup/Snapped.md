@@ -4,7 +4,7 @@
 
 ![Snapped Banner](images/banner.png)
 
-> **Difficulty:** Hard | **OS:** Linux | **Release:** 2026 | **Rating:** 4.5 ⭐ | **XP:** 850
+> **Difficulty:** Hard | **OS:** Linux | **Release:** 2026 |
 
 ---
 
@@ -121,6 +121,8 @@ curl -s -D headers.txt http://admin.snapped.htb/api/backup -o backup.zip
 grep -i x-backup-security headers.txt
 ```
 
+![Backup downloading from /api/backup](images/api_backup.png)
+
 ```
 X-Backup-Security: <KEY_B64>:<IV_B64>
 ```
@@ -134,7 +136,6 @@ unzip -o backup.zip
 # → hash_info.txt  nginx-ui.zip  nginx.zip
 ```
 
-![Backup downloading from /api/backup](images/api_backup.png)
 
 ### Decryption
 
