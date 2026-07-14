@@ -2,7 +2,7 @@
 
 *by [ak4hit](https://github.com/ak4hit)*
 
-![MakeSense Banner](banner.png)
+![MakeSense Banner](images/banner.png)
 
 > **Difficulty:** Medium | **OS:** Linux | **Release:** 2026 | 
 
