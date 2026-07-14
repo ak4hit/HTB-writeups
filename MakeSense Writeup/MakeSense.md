@@ -4,7 +4,7 @@
 
 ![MakeSense Banner](banner.png)
 
-> **Difficulty:** Medium | **OS:** Linux | **Release:** 2026 | **Rating:** 3.5 ⭐ | **XP:** 845
+> **Difficulty:** Medium | **OS:** Linux | **Release:** 2026 | 
 
 ---
 
