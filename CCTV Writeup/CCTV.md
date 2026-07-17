@@ -9,8 +9,8 @@
 ## Attack Path Overview
 
 1. Nmap → ports 22, 80 → `cctv.htb` running **ZoneMinder** ("SecureVision" branded)
-2. ZoneMinder version fingerprinted as **1.37.63** via `?view=options&tab=version`
-3. Burp Intruder brute-force of the login form fails — no valid creds found this way
+2. Burp Intruder brute-force of the login form → `admin:admin` succeeds
+3. Once logged in, ZoneMinder version fingerprinted as **1.37.63** via `?view=options&tab=version`
 4. Version 1.37.63 matches **CVE-2024-51482** — unauthenticated-path, session-gated SQL injection in `removetag`
 5. sqlmap (time-based blind) → dump `zm.Users` → bcrypt hashes for `superadmin`, `mark`, `admin`
 6. John + rockyou → crack `mark:opensesame` and `admin:admin`
@@ -53,13 +53,27 @@ Port 80 hosts a company landing page for a fictitious security firm, "SecureVisi
 
 ---
 
-## Step 2 — Fingerprinting ZoneMinder
+## Step 2 — Login Brute-Force
 
 Navigating to `http://cctv.htb/zm/` presents an empty ZoneMinder console (no monitors configured):
 
 ![ZoneMinder console, no monitors configured](images/dash.png)
 
-The version is confirmed via the Options → Version tab:
+The login form was tested with Burp Intruder using a small list of common credential pairs:
+
+![Burp Intruder attack against the ZoneMinder login form](images/burp.png)
+
+Several attempts failed along the way (`user/test`, `admin/password`, etc.), returning the standard error page:
+
+![ZoneMinder login page returning "Invalid username or password"](images/login.png)
+
+Eventually **`admin:admin`** succeeded, granting an authenticated session into the ZoneMinder console.
+
+---
+
+## Step 3 — Fingerprinting ZoneMinder
+
+With an authenticated session established, the exact ZoneMinder version was confirmed via the Options → Version tab:
 
 ```
 http://cctv.htb/zm/?view=options&tab=version
@@ -68,20 +82,6 @@ http://cctv.htb/zm/?view=options&tab=version
 ![ZoneMinder Options page confirming version 1.37.63](images/version.png)
 
 **`DYN_CURR_VERSION: 1.37.63`** — this is the key finding. ZoneMinder 1.37.x up to and including 1.37.64 is vulnerable to a critical unauthenticated-path SQL injection, patched in 1.37.65.
-
----
-
-## Step 3 — Login Brute-Force Attempt (Dead End)
-
-Before finding the CVE, the login form was tested with Burp Intruder using common credential pairs:
-
-![Burp Intruder attack against the ZoneMinder login form](images/burp.png)
-
-None of the attempted combinations (`admin/admin`, `admin/password`, `user/test`, etc.) succeeded:
-
-![ZoneMinder login page returning "Invalid username or password"](images/login.png)
-
-This ruled out weak/default credentials and pointed toward the version-specific vulnerability instead.
 
 ---
 
