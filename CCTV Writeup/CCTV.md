@@ -55,11 +55,7 @@ Port 80 hosts a company landing page for a fictitious security firm, "SecureVisi
 
 ## Step 2 — Login Brute-Force
 
-Navigating to `http://cctv.htb/zm/` presents an empty ZoneMinder console (no monitors configured):
-
-![ZoneMinder console, no monitors configured](images/dash.png)
-
-The login form was tested with Burp Intruder using a small list of common credential pairs:
+The login form at `http://cctv.htb/zm/?view=login` was tested with Burp Intruder using a small list of common credential pairs:
 
 ![Burp Intruder attack against the ZoneMinder login form](images/burp.png)
 
@@ -67,13 +63,15 @@ Several attempts failed along the way (`user/test`, `admin/password`, etc.), ret
 
 ![ZoneMinder login page returning "Invalid username or password"](images/login.png)
 
-Eventually **`admin:admin`** succeeded, granting an authenticated session into the ZoneMinder console.
+Eventually **`admin:admin`** succeeded. The successful login redirects to the ZoneMinder console — empty, with no monitors configured:
+
+![ZoneMinder console after successful login, no monitors configured](images/dash.png)
 
 ---
 
 ## Step 3 — Fingerprinting ZoneMinder
 
-With an authenticated session established, the exact ZoneMinder version was confirmed via the Options → Version tab:
+From the authenticated console, the exact ZoneMinder version was confirmed by navigating to the Options → Version tab:
 
 ```
 http://cctv.htb/zm/?view=options&tab=version
@@ -377,6 +375,10 @@ Nmap → 22/SSH + 80/HTTP (ZoneMinder "SecureVision")
 - **Pass-the-hash beats cracking.** motionEye's signature-based auth accepted the raw password hash as a valid HMAC key, meaning the stolen SHA1 hash was directly usable without ever being cracked.
 - **Config-write features are code-execution sinks.** Any application that writes user-supplied strings into a daemon's config file — especially one with shell-expansion semantics — is a potential RCE vector, particularly when that daemon runs as root.
 - **Client-side validation is not a security boundary.** A one-line console override (`configUiValid = () => true`) was enough to bypass all form-level input restrictions.
+
+---
+
+*HackTheBox · CCTV · Linux · by [ak4hit](https://github.com/ak4hit)*
 
 ---
 
