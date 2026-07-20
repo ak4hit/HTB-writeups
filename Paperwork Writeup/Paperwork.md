@@ -2,7 +2,7 @@
 
 *by [ak4hit](https://github.com/ak4hit)*
 
-![Paperwork Intake Portal](images/intake_portal.png)
+![Paperwork Intake Portal](images/paperwork.png)
 
 > **Difficulty:** Easy | **OS:** Linux | **Release:** 2026 |
 
