@@ -90,7 +90,7 @@ http://cctv.htb/zm/?view=options&tab=version
 ZoneMinder's `web/ajax/event.php` takes the `tid` request parameter for the `removetag` action and concatenates it directly into a raw SQL query without parameterization — a classic boolean/time-based blind SQL injection.
 
 ```
-GHSA-qm8h-3xvf-m7j3
+[ZoneMinder](https://github.com/ZoneMinder/zoneminder/security/advisories/GHSA-qm8h-3xvf-m7j3)
 CVSS 9.9 (Critical)
 ```
 
