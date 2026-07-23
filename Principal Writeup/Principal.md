@@ -211,10 +211,6 @@ Then navigating to `/dashboard` fires `initDashboard()`, which hits `/api/dashbo
 {"user":{"role":"ROLE_ADMIN","username":"admin"}, ...}
 ```
 
-<p align="center">
-  <img src="images/login.png" width="850">
-  <br><em>Same login page — now bypassed entirely without ever entering a password</em>
-</p>
 
 ---
 
